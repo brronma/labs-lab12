@@ -58,7 +58,7 @@ module "app_security_group" {
 
 module "lb_security_group" {
   source  = "terraform-aws-modules/security-group/aws//modules/web"
-  version = "1.13.1"
+  version = "3.17,0"
 
   name        = "lb-sg-project-alpha-dev"
   description = "Security group for load balancer with HTTP ports open within VPC"
