@@ -58,13 +58,13 @@ module "app_security_group" {
 
 module "lb_security_group" {
   source  = "terraform-aws-modules/security-group/aws//modules/web"
-  version = "3.17.0"
+  version = "1.11.8"
 
   name        = "lb-sg-project-alpha-dev"
   description = "Security group for load balancer with HTTP ports open within VPC"
   vpc_id      = module.vpc.vpc_id
 
-  ingress_cidr_blocks = ["0.0.0.0/0"]
+  ingress_cidr_blocks = ["10.0.0.0/16"]
   ingress_rules       = ["ssh-tcp"]
   ingress_with_cidr_blocks = [
     {
@@ -85,7 +85,7 @@ module "lb_security_group" {
 resource "aws_ebs_volume" "unencrypted" {
   availability_zone = "us-west-1a"
   size              = 8
-  encrypted         = false # Intentional violation: unencrypted EBS volume
+  encrypted         = true # Intentional violation: unencrypted EBS 
 }
 resource "random_string" "lb_id" {
   length  = 3
