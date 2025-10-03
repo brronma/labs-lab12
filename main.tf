@@ -83,7 +83,7 @@ module "lb_security_group" {
 }
 
 resource "aws_ebs_volume" "unencrypted" {
-  availability_zone = "us-west-1a"
+  availability_zone = "us-west-1b"
   size              = 8
   encrypted         = false # Intentional violation: unencrypted EBS 
 }
